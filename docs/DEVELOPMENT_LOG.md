@@ -1,1 +1,1 @@
-- [2026-10-02T17:55:00+01:00] chore(tailwind): setup postcss.config.js for tailwindcss processing
+- [2026-10-02T18:43:00+01:00] chore(tailwind): define custom theme tokens, plantain color scale in tailwind.config.js
