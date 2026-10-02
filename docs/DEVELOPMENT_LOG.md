@@ -1,1 +1,1 @@
-- [2026-10-02T13:09:00+01:00] chore(typescript): configure tsconfig.json and app-level compiler options
+- [2026-10-02T14:20:00+01:00] chore(typescript): setup tsconfig.app.json with strict typing rules
