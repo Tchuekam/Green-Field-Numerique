@@ -1,1 +1,1 @@
-- [2026-10-02T16:39:00+01:00] chore(linting): configure oxlint linter rules and performance checks
+- [2026-10-02T17:55:00+01:00] chore(tailwind): setup postcss.config.js for tailwindcss processing
