@@ -1,1 +1,1 @@
-- [2026-10-02T11:37:00+01:00] chore(tooling): configure vite.config.ts with React plugin and preview host bindings
+- [2026-10-02T13:09:00+01:00] chore(typescript): configure tsconfig.json and app-level compiler options
