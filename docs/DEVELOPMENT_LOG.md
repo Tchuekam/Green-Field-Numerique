@@ -1,1 +1,1 @@
-- [2026-10-02T15:13:00+01:00] chore(typescript): setup tsconfig.node.json for Vite configuration build
+- [2026-10-02T16:39:00+01:00] chore(linting): configure oxlint linter rules and performance checks
