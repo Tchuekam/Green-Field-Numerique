@@ -1,1 +1,1 @@
-- [2026-10-02T18:43:00+01:00] chore(tailwind): define custom theme tokens, plantain color scale in tailwind.config.js
+- [2026-10-03T09:11:00+01:00] feat(html): craft index.html application entry point with Apple viewport meta tags
