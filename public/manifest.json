@@ -1,0 +1,8 @@
+{
+  "name": "GreenField Traçabilité",
+  "short_name": "GreenField",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1B3B2B",
+  "background_color": "#F8FAF9"
+}
