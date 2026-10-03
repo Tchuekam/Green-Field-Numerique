@@ -1,1 +1,1 @@
-- [2026-10-03T09:11:00+01:00] feat(html): craft index.html application entry point with Apple viewport meta tags
+- [2026-10-03T11:36:00+01:00] feat(styles): implement base index.css with font smoothing and custom utilities
