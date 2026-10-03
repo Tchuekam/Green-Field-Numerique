@@ -1,1 +1,1 @@
-- [2026-10-03T11:36:00+01:00] feat(styles): implement base index.css with font smoothing and custom utilities
+- [2026-10-03T12:42:00+01:00] feat(styles): create App.css layout reset styles
