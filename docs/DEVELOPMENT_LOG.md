@@ -1,1 +1,1 @@
-- [2026-10-03T14:17:00+01:00] feat(entry): implement main.tsx with React StrictMode root mounting
+- [2026-10-06T12:09:00+01:00] chore(deps): lock package dependencies in package-lock.json
