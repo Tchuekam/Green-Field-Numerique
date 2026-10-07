@@ -1,1 +1,1 @@
-- [2026-10-06T12:09:00+01:00] chore(deps): lock package dependencies in package-lock.json
+- [2026-10-07T14:54:00+01:00] refactor(config): tune preview port to 5173 with explicit host binding
