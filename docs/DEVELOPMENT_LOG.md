@@ -1,1 +1,1 @@
-- [2026-10-08T15:28:00+01:00] refactor(tailwind): add custom animation keyframes for modal fade-in
+- [2026-10-08T16:17:00+01:00] feat(styles): add utility classes for tabular numbers and glass cards
