@@ -1,1 +1,1 @@
-- [2026-10-07T14:54:00+01:00] refactor(config): tune preview port to 5173 with explicit host binding
+- [2026-10-08T15:28:00+01:00] refactor(tailwind): add custom animation keyframes for modal fade-in
