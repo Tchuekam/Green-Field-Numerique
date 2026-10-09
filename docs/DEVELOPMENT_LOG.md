@@ -1,1 +1,1 @@
-- [2026-10-08T16:17:00+01:00] feat(styles): add utility classes for tabular numbers and glass cards
+- [2026-10-09T12:29:00+01:00] feat(types): create initial type declaration placeholder file
