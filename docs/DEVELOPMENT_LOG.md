@@ -1,0 +1,1 @@
+- [2026-10-09T12:29:00+01:00] feat(types): create initial type declaration placeholder file
