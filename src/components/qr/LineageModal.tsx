@@ -121,22 +121,22 @@ export const LineageModal: React.FC<LineageModalProps> = ({
             </Badge>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Poids Unitaire</span>
-              <span className="font-semibold">{pkg?.unitWeightKg || (lot.type === 'FLOUR' ? '1.0' : '0.25')} kg</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs pt-3 border-t border-slate-200/60 dark:border-slate-800">
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Poids Unitaire</span>
+              <span className="font-bold text-slate-900 dark:text-slate-100 tabular-nums">{pkg?.unitWeightKg || (lot.type === 'FLOUR' ? '1.0' : '0.25')} kg</span>
             </div>
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Format</span>
-              <span className="font-semibold">{pkg?.packageType || lot.packageFormat}</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Format</span>
+              <span className="font-bold text-slate-900 dark:text-slate-100">{pkg?.packageType || lot.packageFormat}</span>
             </div>
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Prix Unitaire</span>
-              <span className="font-semibold">{pkg?.unitPriceFcfa || (lot.type === 'FLOUR' ? '1 500' : '500')} FCFA</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Prix Unitaire</span>
+              <span className="font-bold text-slate-900 dark:text-slate-100 tabular-nums">{pkg?.unitPriceFcfa || (lot.type === 'FLOUR' ? '1 500' : '500')} FCFA</span>
             </div>
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Date Création</span>
-              <span className="font-semibold">{pkg?.createdAt || lot.createdAt.split(' ')[0]}</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Date Création</span>
+              <span className="font-bold text-slate-900 dark:text-slate-100 tabular-nums">{pkg?.createdAt || lot.createdAt.split(' ')[0]}</span>
             </div>
           </div>
         </div>
@@ -160,48 +160,48 @@ export const LineageModal: React.FC<LineageModalProps> = ({
             <Badge variant="blue">{lot.qcStatus}</Badge>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs mb-3">
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Plantain Entré</span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3 text-xs mb-3 pt-3 border-t border-slate-200/60 dark:border-slate-800">
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Plantain Entré</span>
               <span className="font-bold text-slate-900 dark:text-slate-100 tabular-nums">
                 {lot.inputWeightKg.toLocaleString()} kg
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Rendement Obtenu</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Rendement Obtenu</span>
               <span className="font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">
                 {lot.finalYieldKg} kg ({lot.yieldRatioPercent}%)
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Épluchures (Biogaz)</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Épluchures (Biogaz)</span>
               <span className="font-bold text-amber-600 dark:text-amber-400 tabular-nums">
-                {lot.peelWasteKg} kg envoyé au digesteur
+                {lot.peelWasteKg} kg digesteur
               </span>
             </div>
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Heures Machine</span>
-              <span className="font-bold tabular-nums">{lot.machineHours} h</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Heures Machine</span>
+              <span className="font-bold tabular-nums text-slate-900 dark:text-slate-100">{lot.machineHours} h</span>
             </div>
             {lot.type === 'CHIPS' && (
-              <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold flex items-center gap-1">
-                  <Flame className="w-3 h-3 text-red-500" /> Huile & Température
+              <div>
+                <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5 flex items-center gap-1">
+                  <Flame className="w-3 h-3 text-red-500" /> Friture & Huile
                 </span>
-                <span className="font-bold tabular-nums">{lot.oilTemp}°C ({lot.oilVolumeLiters}L)</span>
+                <span className="font-bold tabular-nums text-slate-900 dark:text-slate-100">{lot.oilTemp}°C ({lot.oilVolumeLiters}L)</span>
               </div>
             )}
             {lot.type === 'FLOUR' && (
-              <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold flex items-center gap-1">
+              <div>
+                <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5 flex items-center gap-1">
                   <Droplets className="w-3 h-3 text-blue-500" /> Humidité Mesurée
                 </span>
-                <span className="font-bold tabular-nums">{lot.humidityPercent}% (Norme &lt; 12%)</span>
+                <span className="font-bold tabular-nums text-slate-900 dark:text-slate-100">{lot.humidityPercent}% (&lt; 12%)</span>
               </div>
             )}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Nombre de Paquets</span>
-              <span className="font-bold tabular-nums">{lot.packagingCount} {lot.packageFormat}</span>
+            <div>
+              <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Conditionné</span>
+              <span className="font-bold tabular-nums text-slate-900 dark:text-slate-100">{lot.packagingCount} {lot.packageFormat}</span>
             </div>
           </div>
 
@@ -232,30 +232,30 @@ export const LineageModal: React.FC<LineageModalProps> = ({
           </div>
 
           {harvest && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs mb-3">
-              <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-plantation-200/60 dark:border-plantation-900">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Nombre de Régimes</span>
-                <span className="font-bold tabular-nums">{harvest.bunchCount} régimes</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-xs pt-3 border-t border-plantation-200/60 dark:border-plantation-900/60 mb-3">
+              <div>
+                <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Nombre de Régimes</span>
+                <span className="font-bold tabular-nums text-slate-900 dark:text-slate-100">{harvest.bunchCount} régimes</span>
               </div>
-              <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-plantation-200/60 dark:border-plantation-900">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Poids Récolté</span>
-                <span className="font-bold tabular-nums">{harvest.totalWeightKg.toLocaleString()} kg</span>
+              <div>
+                <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Poids Récolté</span>
+                <span className="font-bold tabular-nums text-slate-900 dark:text-slate-100">{harvest.totalWeightKg.toLocaleString()} kg</span>
               </div>
-              <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-plantation-200/60 dark:border-plantation-900">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Pertes Transport 3km</span>
-                <span className="font-bold text-amber-600 tabular-nums">{harvest.fieldToFactoryLossKg} kg</span>
+              <div>
+                <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Pertes Piste (3km)</span>
+                <span className="font-bold text-amber-600 dark:text-amber-400 tabular-nums">{harvest.fieldToFactoryLossKg} kg</span>
               </div>
-              <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-plantation-200/60 dark:border-plantation-900">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Opérateur Récolte</span>
-                <span className="font-semibold truncate">{harvest.operatorId}</span>
+              <div>
+                <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">Opérateur</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100 truncate block">{harvest.operatorId}</span>
               </div>
             </div>
           )}
 
           {isInternal && bloc && (
-            <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-plantation-200/60 dark:border-plantation-900 space-y-2 text-xs">
+            <div className="pt-3 border-t border-plantation-200/60 dark:border-plantation-900/60 space-y-2 text-xs">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="font-semibold text-slate-800 dark:text-slate-200">
+                <span className="font-bold text-slate-900 dark:text-slate-100">
                   {bloc.name} ({bloc.variety})
                 </span>
                 <span className="flex items-center gap-1 text-slate-500 font-mono text-[11px]">
@@ -265,13 +265,13 @@ export const LineageModal: React.FC<LineageModalProps> = ({
               </div>
 
               <div className="flex flex-wrap gap-4 text-[11px] text-slate-600 dark:text-slate-400">
-                <span>🌱 Plantation : <strong>{bloc.plantationDate}</strong></span>
-                <span>🧪 Dernière fertilisation : <strong>{bloc.fertilizerDate}</strong></span>
-                <span>🌿 Végétation : <strong>{bloc.plantCount} plants</strong></span>
+                <span>🌱 Plantation : <strong className="text-slate-800 dark:text-slate-200">{bloc.plantationDate}</strong></span>
+                <span>🧪 Fertilisation : <strong className="text-slate-800 dark:text-slate-200">{bloc.fertilizerDate}</strong></span>
+                <span>🌿 Végétation : <strong className="text-slate-800 dark:text-slate-200">{bloc.plantCount} plants</strong></span>
               </div>
 
               {origin.sanitaryObservations?.length > 0 && (
-                <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                <div className="mt-2 pt-2 border-t border-plantation-100 dark:border-plantation-900/40">
                   <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
                     Dernières observations sanitaires :
                   </p>

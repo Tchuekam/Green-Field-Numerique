@@ -408,7 +408,7 @@ export const ProcessingView: React.FC = () => {
             </span>
           </div>
 
-          <div className="space-y-2.5">
+          <div className="space-y-3">
             {lots.map((lot) => {
               const isSelected = selectedLotForQR?.lotId === lot.lotId;
               const sampleQRHash = `GF-${lot.lotId}-${lot.sourceBlocId || 'EXT'}-001`;
@@ -416,79 +416,100 @@ export const ProcessingView: React.FC = () => {
               return (
                 <div
                   key={lot.lotId}
-                  className={`p-3.5 sm:p-4 rounded-2xl border transition-all ${
+                  className={`rounded-2xl transition-all duration-200 border p-4 sm:p-5 ${
                     isSelected
-                      ? 'bg-plantation-50/80 dark:bg-plantation-950/40 border-plantation-500 shadow-md'
-                      : 'bg-white dark:bg-slate-900 border-slate-200/80 dark:border-slate-800 shadow-subtle-card'
+                      ? 'bg-plantation-50/50 dark:bg-plantation-950/30 border-plantation-500/60 shadow-md ring-1 ring-plantation-500/30'
+                      : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-slate-200/70 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm'
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <div className="flex items-center gap-2.5">
+                  {/* Top row: Identity, Badges & Action */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3 min-w-0">
                       <div
-                        className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs ${
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center font-extrabold text-xs shrink-0 tracking-tight ${
                           lot.type === 'FLOUR'
-                            ? 'bg-plantation-100 dark:bg-plantation-950 text-plantation-800 dark:text-plantation-300'
-                            : 'bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300'
+                            ? 'bg-plantation-100 dark:bg-plantation-950/80 text-plantation-800 dark:text-plantation-300'
+                            : 'bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300'
                         }`}
                       >
                         {lot.type === 'FLOUR' ? 'LF' : 'LC'}
                       </div>
-                      <div>
-                        <div className="flex items-center gap-1.5">
-                          <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h4 className="font-extrabold text-sm text-slate-900 dark:text-white tracking-tight whitespace-nowrap">
                             Lot {lot.lotId}
                           </h4>
                           <Badge variant="emerald" size="sm" dot>
                             {lot.qcStatus}
                           </Badge>
                         </div>
-                        <p className="text-[11px] text-slate-400">
-                          Récolte {lot.sourceHarvestId} · Bloc {lot.sourceBlocId || 'Ext.'}
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                          Récolte <span className="font-medium text-slate-700 dark:text-slate-300">{lot.sourceHarvestId}</span> · Bloc <span className="font-medium text-slate-700 dark:text-slate-300">{lot.sourceBlocId || 'Partenaire'}</span> · {lot.packageFormat}
                         </p>
                       </div>
                     </div>
 
                     <Button
                       size="sm"
-                      variant="glass"
+                      variant={isSelected ? 'primary' : 'glass'}
                       onClick={() => setSelectedLotForQR(isSelected ? null : lot)}
-                      leftIcon={<QrCode className="w-3.5 h-3.5 text-plantation-700" />}
-                      className="text-xs px-2.5 py-1 rounded-xl"
+                      leftIcon={<QrCode className="w-3.5 h-3.5" />}
+                      className="text-xs px-3 py-1.5 rounded-full shrink-0 shadow-none"
                     >
                       {isSelected ? 'Fermer' : 'Étiquette'}
                     </Button>
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                    <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/50 dark:border-slate-800">
-                      <span className="text-slate-400 block text-[9px] uppercase font-bold">Matière Entrée</span>
-                      <span className="font-bold tabular-nums text-slate-800 dark:text-slate-200">{lot.inputWeightKg} kg</span>
-                    </div>
-                    <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/50 dark:border-slate-800">
-                      <span className="text-slate-400 block text-[9px] uppercase font-bold">Rendement Fini</span>
-                      <span className="font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">
-                        {lot.finalYieldKg} kg ({lot.yieldRatioPercent}%)
+                  {/* Clean Horizontal Metric Strip — ZERO Nested Box Cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 mt-3.5 pt-3.5 border-t border-slate-100 dark:border-slate-800/80">
+                    <div>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-0.5">
+                        Matière entrée
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold tabular-nums text-slate-900 dark:text-slate-100">
+                        {lot.inputWeightKg.toLocaleString()} <span className="text-[11px] font-medium text-slate-400">kg</span>
                       </span>
                     </div>
-                    <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/50 dark:border-slate-800">
-                      <span className="text-slate-400 block text-[9px] uppercase font-bold">Épluchures</span>
-                      <span className="font-bold text-amber-600 tabular-nums">{lot.peelWasteKg} kg</span>
+
+                    <div>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-0.5">
+                        Rendement fini
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">
+                        {lot.finalYieldKg.toLocaleString()} <span className="text-[11px] font-medium text-emerald-600/70">kg ({lot.yieldRatioPercent}%)</span>
+                      </span>
                     </div>
-                    <div className="p-2 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/50 dark:border-slate-800">
-                      <span className="text-slate-400 block text-[9px] uppercase font-bold">Conditionné</span>
-                      <span className="font-bold tabular-nums text-slate-800 dark:text-slate-200">{lot.packagingCount} pqt</span>
+
+                    <div>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-0.5">
+                        Épluchures
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 tabular-nums">
+                        {lot.peelWasteKg.toLocaleString()} <span className="text-[11px] font-medium text-amber-600/70">kg</span>
+                      </span>
+                    </div>
+
+                    <div>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-0.5">
+                        Conditionné
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold tabular-nums text-slate-900 dark:text-slate-100">
+                        {lot.packagingCount.toLocaleString()} <span className="text-[11px] font-medium text-slate-400">{lot.type === 'FLOUR' ? 'sachets' : 'paquets'}</span>
+                      </span>
                     </div>
                   </div>
 
-                  {/* Expanded QR Code label */}
+                  {/* Expanded QR Code label — Clean Inset without bulky nested box */}
                   {isSelected && (
-                    <div className="mt-3 pt-3 border-t border-slate-200/60 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-around gap-3 animate-fade-in bg-white dark:bg-slate-900 p-3 rounded-xl">
-                      <QRCodeDisplay
-                        hash={sampleQRHash}
-                        label={`Étiquette ${lot.packageFormat}`}
-                        sublabel={`Lot: ${lot.lotId} · Origine: Bloc ${lot.sourceBlocId}`}
-                        size={130}
-                      />
+                    <div className="mt-4 pt-4 border-t border-slate-200/60 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-around gap-4 animate-fade-in">
+                      <div className="bg-white p-2.5 rounded-2xl shadow-sm border border-slate-100 dark:border-transparent">
+                        <QRCodeDisplay
+                          hash={sampleQRHash}
+                          label={`Étiquette ${lot.packageFormat}`}
+                          sublabel={`Lot: ${lot.lotId} · Origine: Bloc ${lot.sourceBlocId}`}
+                          size={130}
+                        />
+                      </div>
                       <div className="text-xs space-y-1.5 text-slate-600 dark:text-slate-300 max-w-xs text-center sm:text-left">
                         <p className="font-bold text-slate-900 dark:text-white">
                           Étiquette Adhésive Pack

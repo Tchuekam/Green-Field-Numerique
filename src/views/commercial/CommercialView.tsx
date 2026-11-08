@@ -439,24 +439,24 @@ export const CommercialView: React.FC<CommercialViewProps> = ({
                 Ouvrir la Caméra pour Scanner un Paquet
               </Button>
 
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 space-y-2 text-xs">
-                <span className="font-bold text-[11px] uppercase tracking-wider text-slate-400 block">
-                  Ou testez directement avec un sachet du stock :
+              <div className="pt-3.5 border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+                <span className="font-semibold text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
+                  Échantillons du stock pour test :
                 </span>
-                <div className="flex flex-col gap-1.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <button
                     onClick={() => onScanQR('GF-LF001-B07-001')}
-                    className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left hover:border-plantation-500 flex items-center justify-between text-xs"
+                    className="px-3 py-2 rounded-xl text-left hover:bg-slate-100/70 dark:hover:bg-slate-800/70 border border-slate-200/60 dark:border-slate-700/60 transition-colors flex items-center justify-between text-xs group"
                   >
-                    <span>Sachet Farine 1kg · <strong>Lot LF-001</strong></span>
-                    <Badge variant="emerald" size="sm">Bloc B07 →</Badge>
+                    <span className="truncate text-slate-700 dark:text-slate-300">Farine 1kg · <strong className="font-mono text-slate-900 dark:text-white">LF-001</strong></span>
+                    <span className="text-[10px] font-bold text-plantation-600 dark:text-plantation-400 group-hover:translate-x-0.5 transition-transform ml-1">B07 →</span>
                   </button>
                   <button
                     onClick={() => onScanQR('GF-LC001-B03-001')}
-                    className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left hover:border-amber-500 flex items-center justify-between text-xs"
+                    className="px-3 py-2 rounded-xl text-left hover:bg-slate-100/70 dark:hover:bg-slate-800/70 border border-slate-200/60 dark:border-slate-700/60 transition-colors flex items-center justify-between text-xs group"
                   >
-                    <span>Paquet Chips 250g · <strong>Lot LC-001</strong></span>
-                    <Badge variant="amber" size="sm">Bloc B03 →</Badge>
+                    <span className="truncate text-slate-700 dark:text-slate-300">Chips 250g · <strong className="font-mono text-slate-900 dark:text-white">LC-001</strong></span>
+                    <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-0.5 transition-transform ml-1">B03 →</span>
                   </button>
                 </div>
               </div>
@@ -468,19 +468,19 @@ export const CommercialView: React.FC<CommercialViewProps> = ({
       {/* Subtab 2: Commandes List */}
       {activeSubTab === 'commandes' && (
         <div className="space-y-3">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
             Carnet des Commandes & Bons de Livraison ({orders.length})
           </h3>
 
-          <div className="space-y-3">
+          <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl overflow-hidden divide-y divide-slate-100 dark:divide-slate-800/80 shadow-sm">
             {orders.map((ord) => (
               <div
                 key={ord.orderId}
-                className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-subtle-card flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/50 dark:hover:bg-slate-850/50 transition-colors"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-extrabold text-sm text-slate-900 dark:text-white">
+                    <span className="font-extrabold text-sm text-slate-900 dark:text-white whitespace-nowrap">
                       {ord.orderId}
                     </span>
                     <Badge variant="blue" size="sm">
@@ -493,18 +493,18 @@ export const CommercialView: React.FC<CommercialViewProps> = ({
                   <h4 className="font-semibold text-xs text-slate-700 dark:text-slate-300">
                     {ord.clientName} ({ord.deliveryCity})
                   </h4>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 mt-0.5">
                     {ord.orderDate} · WhatsApp: {ord.whatsappContact}
                   </p>
                   {ord.notes && <p className="text-xs text-slate-400 mt-1 italic">« {ord.notes} »</p>}
                 </div>
 
-                <div className="text-right sm:self-center">
-                  <span className="text-base font-black text-slate-900 dark:text-white block tabular-nums">
+                <div className="text-right sm:self-center shrink-0">
+                  <span className="text-base font-extrabold text-slate-900 dark:text-white block tabular-nums">
                     {ord.totalAmountFcfa?.toLocaleString()} FCFA
                   </span>
-                  <span className="text-xs text-slate-400">
-                    Lots associés: {ord.assignedLotIds?.join(', ') || 'N/A'}
+                  <span className="text-[11px] text-slate-400">
+                    Lots: {ord.assignedLotIds?.join(', ') || 'N/A'}
                   </span>
                 </div>
               </div>

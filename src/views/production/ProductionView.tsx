@@ -382,22 +382,38 @@ export const ProductionView: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-xs">
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Variété Plantain</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">{selectedBloc.variety}</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-3 mt-3.5 pt-3.5 border-t border-slate-100 dark:border-slate-800/80">
+                <div>
+                  <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                    Variété Plantain
+                  </span>
+                  <span className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100">
+                    {selectedBloc.variety}
+                  </span>
                 </div>
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Date Plantation</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">{selectedBloc.plantationDate}</span>
+                <div>
+                  <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                    Date Plantation
+                  </span>
+                  <span className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 tabular-nums">
+                    {selectedBloc.plantationDate}
+                  </span>
                 </div>
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Dernière Fertilisation</span>
-                  <span className="font-bold text-slate-800 dark:text-slate-200">{selectedBloc.fertilizerDate}</span>
+                <div>
+                  <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                    Dernière Fertilisation
+                  </span>
+                  <span className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 tabular-nums">
+                    {selectedBloc.fertilizerDate}
+                  </span>
                 </div>
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800">
-                  <span className="text-slate-400 block text-[10px] uppercase font-bold">Récolte Prévisionnelle</span>
-                  <span className="font-bold text-emerald-600 dark:text-emerald-400">{selectedBloc.expectedHarvestDate}</span>
+                <div>
+                  <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                    Récolte Prévisionnelle
+                  </span>
+                  <span className="font-bold text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 tabular-nums">
+                    {selectedBloc.expectedHarvestDate}
+                  </span>
                 </div>
               </div>
             </Card>
@@ -492,19 +508,19 @@ export const ProductionView: React.FC = () => {
               <span className="text-xs text-slate-500">Chaque récolte génère un code R-XXX</span>
             </div>
 
-            <div className="space-y-2">
+            <div className="rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl overflow-hidden divide-y divide-slate-100 dark:divide-slate-800/80 shadow-sm">
               {harvests.map((h) => (
                 <div
                   key={h.harvestId}
-                  className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3 shadow-subtle-card"
+                  className="p-3.5 sm:p-4 flex items-center justify-between gap-3 hover:bg-slate-50/50 dark:hover:bg-slate-850/50 transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-plantation-100 dark:bg-plantation-950 text-plantation-700 dark:text-plantation-300 flex items-center justify-center font-bold text-xs">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-8 h-8 rounded-xl bg-plantation-100 dark:bg-plantation-950 text-plantation-700 dark:text-plantation-300 flex items-center justify-center font-bold text-xs shrink-0">
                       {h.harvestId}
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm text-slate-900 dark:text-slate-100">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 whitespace-nowrap">
                           Bloc {h.blocId || 'Partenaire'}
                         </span>
                         <Badge variant="slate" size="sm">
@@ -514,18 +530,18 @@ export const ProductionView: React.FC = () => {
                           {h.syncStatus === 'SYNCED' ? 'Sync' : 'En attente'}
                         </Badge>
                       </div>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-[11px] text-slate-500 truncate mt-0.5">
                         {h.harvestDate} · {h.operatorId}
                       </p>
                     </div>
                   </div>
 
-                  <div className="text-right">
-                    <span className="font-bold text-sm text-plantation-700 dark:text-plantation-400 block tabular-nums">
+                  <div className="text-right shrink-0">
+                    <span className="font-bold text-xs sm:text-sm text-plantation-700 dark:text-plantation-400 block tabular-nums">
                       {Number(h.totalWeightKg).toLocaleString()} kg
                     </span>
-                    <span className="text-[11px] text-amber-600 block tabular-nums">
-                      -{h.fieldToFactoryLossKg} kg transport
+                    <span className="text-[10px] text-amber-600 block tabular-nums">
+                      -{h.fieldToFactoryLossKg} kg piste
                     </span>
                   </div>
                 </div>
@@ -726,18 +742,30 @@ export const ProductionView: React.FC = () => {
                   <h4 className="font-bold text-sm text-slate-900 dark:text-white">{sup.name}</h4>
                   <Badge variant="emerald">{sup.externalLotId}</Badge>
                 </div>
-                <div className="grid grid-cols-3 gap-2 text-xs">
-                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Volume Livré</span>
-                    <span className="font-bold tabular-nums">{sup.volumeKg.toLocaleString()} kg</span>
+                <div className="grid grid-cols-3 gap-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-xs">
+                  <div>
+                    <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                      Volume livré
+                    </span>
+                    <span className="font-bold text-slate-900 dark:text-white tabular-nums">
+                      {sup.volumeKg.toLocaleString()} kg
+                    </span>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Prix / kg</span>
-                    <span className="font-bold tabular-nums">{sup.pricePerKg} FCFA</span>
+                  <div>
+                    <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                      Prix unitaire
+                    </span>
+                    <span className="font-bold text-plantation-700 dark:text-plantation-400 tabular-nums">
+                      {sup.pricePerKg} FCFA
+                    </span>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Région</span>
-                    <span className="font-semibold">{sup.region}</span>
+                  <div>
+                    <span className="text-slate-400 dark:text-slate-500 block text-[10px] uppercase font-semibold tracking-wider mb-0.5">
+                      Origine
+                    </span>
+                    <span className="font-semibold text-slate-700 dark:text-slate-300 truncate block">
+                      {sup.region}
+                    </span>
                   </div>
                 </div>
                 <p className="text-xs text-slate-500">Contact: {sup.phone}</p>
